@@ -1,0 +1,46 @@
+{
+  "name": "lockr",
+  "version": "0.1.0",
+  "description": "Redis lock (single Redis instance) module for NestJS.",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/razvgrecu/nest-js-redis-lock.git"
+  },
+  "keywords": [
+    "nest",
+    "redis",
+    "redis lock",
+    "nest js lock",
+    "distributed lock"
+  ],
+  "author": "Razvan Grecu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/razvgrecu/nest-js-redis-lock/issues"
+  },
+  "homepage": "https://github.com/razvgrecu/nest-js-redis-lock#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.42",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@nestjs/common": "^8.4.6",
+    "@nestjs/config": "^2.1.0",
+    "@nestjs/core": "^8.4.6",
+    "ioredis": "^5.0.6",
+    "nanoid": "^4.0.0"
+  }
+}
