@@ -9,15 +9,14 @@
 - this works on the assumption that your application already is using Redis
 - this particular implementation uses `ioredis`
 
-
 ## Installation
 
 - install through npm or yarn
 
-```sass
-npm i @stephanson/nestjs-redis-lock --save
-# OR
-yarn add @stephanson/nestjs-redis-lock
+```
+npm i @stephanson/lockr --save
+#OR
+yarn add @stephanson/lockr
 ```
 
 ## Configuration
@@ -33,18 +32,19 @@ yarn add @stephanson/nestjs-redis-lock
         - `LOCKR_DEFAULT_RETRY_MAX_COUNT`: `number`
 - **you can mix and match whatever approach works for you best**
 - when using the decorator or the service, the precedence of the values is the following:
-  1. the actual input, if exists
-  2. the configured module options, if exists
-  3. the source for `ConfigService`
+    1. the actual input, if exists
+    2. the configured module options, if exists
+    3. the source for `ConfigService`
 - if none of them can provide a value, an error will be thrown by the `ConfigService`
 - the exceptions are
     - the `RetryPreferences` where the assumption is that the retry behavior is not desired.
     - the lock name prefix parameter, which, if not supplied is defaulted to `lock`
-        - a lock will have the format: `<prefix ?? lock>:<user-defined-name>`  
+        - a lock will have the format: `<prefix ?? lock>:<user-defined-name>`
 
 ## Usage
 
 ## Contributions and future
+
 - there are several topics i would like to address in the future
     - adding testcontainers and writing actual tests within the library
     - adding a nestjs specific implementation for redlock (the distributed, multi node redis version of the algorithm)

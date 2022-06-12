@@ -1,6 +1,7 @@
 dist/
 .assets
 
+.tsbuildinfo
 # Created by https://www.gitignore.io/api/node,linux,macos,windows,sublimetext,webstorm+all,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=node,linux,macos,windows,sublimetext,webstorm+all,visualstudiocode
 

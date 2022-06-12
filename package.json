@@ -1,10 +1,10 @@
 {
-  "name": "lockr",
-  "version": "0.1.0",
+  "name": "@stephanson/lockr",
+  "version": "0.1.11",
   "description": "Redis lock (single Redis instance) module for NestJS.",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,7 +26,9 @@
   },
   "homepage": "https://github.com/razvgrecu/nest-js-redis-lock#readme",
   "devDependencies": {
+    "@types/ioredis": "^4.28.10",
     "@types/node": "^17.0.42",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "eslint": "^8.17.0",
@@ -40,7 +42,9 @@
     "@nestjs/common": "^8.4.6",
     "@nestjs/config": "^2.1.0",
     "@nestjs/core": "^8.4.6",
-    "ioredis": "^5.0.6",
-    "nanoid": "^4.0.0"
+    "uuid": "^8.3.2"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }

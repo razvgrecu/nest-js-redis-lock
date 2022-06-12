@@ -12,10 +12,10 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "declaration": true,
-    "strict": true,
+    "strict": true
   },
   "include": [
-    "lib/**/*"
+    "lib/src/**/*"
   ],
   "exclude": [
     "node_modules",

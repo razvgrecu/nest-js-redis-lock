@@ -1,15 +1,15 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { nanoid } from 'nanoid';
 import { LOCK_ACQUIRED as success, LOCK_ALREADY_EXISTS as alreadyExists, LOCK_RETRY_COULD_NOT_ACQUIRE as failed, LOCKR_CONSTANTS as Lockr } from '../constants';
 import { LockPreferences, UnlockPreferences } from '../interfaces/preferences';
 import { LockrOptions } from '../interfaces/module';
 import { LockStatus } from '../types';
 import { LockrUtils, RedisUtils } from '../utils';
 import { PreferenceService } from './preference.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class LockrService {
-	protected readonly nanoId = nanoid();
+	protected readonly uuid = uuidv4();
 	private readonly logger = new Logger(LockrService.name);
 
 	constructor(@Inject(Lockr.providerName) private readonly options: LockrOptions, private readonly preferenceService: PreferenceService) {}
@@ -47,7 +47,7 @@ export class LockrService {
     end
     `;
 
-		const result = await this.options?.client?.eval(unlockScript, 1, lockName, this.nanoId);
+		const result = await this.options?.client?.eval(unlockScript, 1, lockName, this.uuid);
 
 		this.logger.log(`
 				> Lock status: ${!!result ? 'Unlocked' : 'Failed to unlock '}
@@ -74,7 +74,7 @@ export class LockrService {
 
 		let retryCount = 0;
 		while (true) {
-			const lock = await client?.set(lockName, this.nanoId, 'PX', lockDuration, 'NX');
+			const lock = await client?.set(lockName, this.uuid, 'PX', lockDuration, 'NX');
 			if (retryPreferences.maxRetryCount === 0 || lock !== null) {
 				return {
 					acquired: lock !== null,

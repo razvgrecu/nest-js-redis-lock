@@ -1,7 +1,7 @@
 import { DecoratorPreferences } from '../interfaces/preferences';
 import { Inject } from '@nestjs/common';
 import { LockrService } from '../service/lockr.service';
-import { LockrError } from '../lockr.error';
+import { LockrError } from '../errors';
 
 export function LockR(lockName: string, options: Partial<DecoratorPreferences> = { unlockAfterExpiration: false }) {
 	const lockrService = Inject(LockrService);

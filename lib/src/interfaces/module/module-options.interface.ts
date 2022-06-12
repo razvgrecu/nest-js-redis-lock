@@ -1,5 +1,5 @@
-import Redis from 'ioredis';
 import { LockTimeUnit } from '../../types';
+import { Redis } from 'ioredis';
 
 export interface LockrOptions {
 	readonly retryCount?: number;
